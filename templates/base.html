@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+  </head>
+  <body>
+        <nav class="navbar navbar-expand-md" style="background-color: #bbebff;">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/">Main</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                {% for endpoint, label in [
+                  ('users_page', 'Пользователи'),
+                  ('question_page', 'Вопросы'),
+                  ('tests_page', 'Тесты'),
+                  ('temp_page', 'Заглушка'),
+                  ('temp_page', 'Заглушка'),
+                  ('temp_page', 'Заглушка'),
+                  ('temp_page', 'Заглушка'),
+                  ] %}
+                    {% set path = url_for(endpoint) %}
+                    <li class="nav-item">
+                        <a class="nav-link {{ 'active' if path == request.path else '' }}"
+                           href="{{ path }}">
+                            {{ label }}
+                        </a>
+                    </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+   {% block body %}
+
+   {% endblock %}
+  <br>
+        &copy; хз кто ваще это сделал 2023
+  <br>
+  <button type="button" class="btn btn-outline-success mt-3 ms-3" href="/">Не работает</button>
+        <br>
+  <button type="button" class="btn btn-outline-danger mt-3 ms-3" href="/">Это тоже</button>
+  </body>
+</html>
