@@ -1,9 +1,9 @@
 from flask import Flask, redirect, url_for, request, render_template, session
-import psycopg2
+import pg8000
 
 
 def get_db_connection():
-    con = psycopg2.connect(
+    con = pg8000.connect(
         database="Tests_DB",
         user="Paloonya",
         password="01012003",
@@ -23,5 +23,5 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET"])
 def index():
-    con = get_db_connection()
+    get_db_connection()
     return render_template("index.html")
