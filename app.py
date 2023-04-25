@@ -20,29 +20,29 @@ def get_db_connection():
 app = Flask(__name__)
 
 
-@app.get('/', endpoint="index_page")
+@app.get("/", endpoint="index_page")
 def index_page():
-    return render_template('index.html')
+    return render_template("index.html")
 
 
-@app.get('/users/', endpoint="users_page")
+@app.get("/users/", endpoint="users_page")
 def users_page():
-    return render_template('users.html')
+    return render_template("users.html")
 
 
-@app.get('/questions/', endpoint="question_page")
+@app.get("/questions/", endpoint="question_page")
 def quest_page():
-    return render_template('quest.html')
+    return render_template("quest.html")
 
 
-@app.get('/tests/', endpoint="tests_page")
+@app.get("/tests/", endpoint="tests_page")
 def tests_page():
-    return render_template('tests.html')
+    return render_template("tests.html")
 
 
-@app.get('/temp/', endpoint="temp_page")
+@app.get("/temp/", endpoint="temp_page")
 def temp_page():
-    return render_template('temp.html')
+    return render_template("temp.html")
 
 
 if __name__ == "__main__":
