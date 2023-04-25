@@ -5,10 +5,22 @@ from .db import db
 
 class Questions(db.Model):
     id = Column(Integer, primary_key=True)
-    q_name = Column(
-        String,
+    ques = Column(
+        Text,
         nullable=False,
         unique=True,
+        default="",
+        server_default="",
+    )
+    topic = Column(
+        String,
+        nullable=False,
+        default="",
+        server_default="",
+    )
+    pic = Column(
+        String,
+        nullable=True,
         default="",
         server_default="",
     )
