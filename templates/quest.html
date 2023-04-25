@@ -5,5 +5,31 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Вопросы?</h1>
+<table class="table table-hover ms-3 me-3">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Тематика</th>
+      <th scope="col">Вопрос</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for num, topic, ques in questions %}
+    <tr>
+        <th scope="row">{{ num }}</th>
+        <td>{{ topic }}</td>
+        <td>
+            <details>
+                <summary>{{ ques }}</summary>
+                {% for a_num, a1, a2, a3, a4 in answers %}
+                    {% if a_num == num %}
+                        <p class="ms-2 me-2 mt-1 mb-1">{{a1}}, {{ a2 }}, {{ a3 }}, {{ a4 }}</p>
+                    {% endif %}
+                {% endfor %}
+            </details>
+        </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 {% endblock %}

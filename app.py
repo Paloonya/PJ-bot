@@ -1,21 +1,6 @@
-from flask import Flask, redirect, url_for, request, render_template, session
-import pg8000
+from flask import Flask, render_template
+import not_db
 
-"""
-def get_db_connection():
-    con = pg8000.connect(database="Tests_DB",
-                           user="Paloonya",
-                           password="01012003",
-                           host="127.0.0.1",
-                           port="5432"
-                           )
-    cur = con.cursor()
-    cur.execute("SELECT ques from quest_raw")
-    rows = cur.fetchall()
-    for row in rows:
-        print("Question: ", row[0])
-    con.close()
-"""
 
 app = Flask(__name__)
 
@@ -27,12 +12,12 @@ def index_page():
 
 @app.get("/users/", endpoint="users_page")
 def users_page():
-    return render_template("users.html")
+    return render_template("users.html", users=not_db.USERS)
 
 
 @app.get("/questions/", endpoint="question_page")
 def quest_page():
-    return render_template("quest.html")
+    return render_template("quest.html", questions=not_db.QUEST, answers=not_db.ANSW)
 
 
 @app.get("/tests/", endpoint="tests_page")
@@ -46,4 +31,4 @@ def temp_page():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, use_reloader=True, use_debugger=False)
