@@ -5,9 +5,9 @@ services:
     container_name: "pg-blog-db"
     image: postgres
     environment:
-      POSTGRES_DB: Tests_DB
-      POSTGRES_USER: Paloonya
-      POSTGRES_PASSWORD: 01012003
+      POSTGRES_DB: pgdb
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
       PGDATA: /var/lib/postgresql/data/pgdata
     ports:
       - "5432:5432"

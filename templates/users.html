@@ -5,5 +5,17 @@
 {% endblock %}
 
 {% block body %}
-    <h1>А вот тута будут котятки</h1>
+    <div class="h1 mb-2">Юзвери:</div>
+  {% if users %}
+    <ul class="list-group">
+      {% for tg, user in users %}
+        <li class="product-list-item list-group-item">
+          <span class="green-text"> {{ tg }} {{ user }} </span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <h2>Тут никого нет</h2>
+  {% endif %}
+
 {% endblock %}
